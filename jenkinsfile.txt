@@ -1,0 +1,46 @@
+pipeline {
+    agent any // You can specify a specific agent if needed
+
+    stages {
+        stage('Checkout') {
+            steps {
+                // Check out the Git repository
+                checkout scm
+            }
+        }
+        
+        stage('Build') {
+            steps {
+                // Execute build commands here
+                sh 'make build' // Replace with your actual build commands
+            }
+        }
+
+        stage('Test') {
+            steps {
+                // Execute test commands here
+                sh 'make test' // Replace with your actual test commands
+            }
+        }
+
+        stage('Deploy') {
+            steps {
+                // Execute deployment commands here
+                sh 'make deploy' // Replace with your actual deployment commands
+            }
+        }
+    }
+
+    post {
+        success {
+            // This block runs when the pipeline succeeds
+            echo 'Pipeline succeeded!'
+        }
+
+        failure {
+            // This block runs when the pipeline fails
+            echo 'Pipeline failed!'
+        }
+    }
+}
+
