@@ -1,0 +1,8 @@
+tasks:
+  restore-npm:
+    steps:
+    ...
+    - reports/html:
+        dir: coverage
+        index: index.html
+
